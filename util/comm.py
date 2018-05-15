@@ -4,6 +4,7 @@
 import logging
 import os
 
+from util.config import *
 
 
 def printInfo(file,message):
