@@ -1,0 +1,32 @@
+{
+  "Huawei-Firewall": {
+    "help": "",
+    "content": "header=\"Eudemon Server\" || body=\"Modify by wangxiangguang\"",
+    "codestatus": "",
+    "customize": {
+      "regx": "",
+      "statics": {},
+      "content": ""
+    }
+  },
+    "xfinity": {
+    "help": "",
+    "content": "title==\"Xfinity\" || body=\"/reset-meyer-1.0.min.css\"",
+    "codestatus": "",
+    "customize": {
+      "regx": "",
+      "statics": {},
+      "content": ""
+    }
+  },
+    "mikrotik": {
+    "help": "",
+    "content": "title=\"RouterOS\" && body=\"mikrotik\"",
+    "codestatus": "",
+    "customize": {
+      "regx": "",
+      "statics": {},
+      "content": ""
+    }
+  }
+ }
