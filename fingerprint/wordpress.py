@@ -3,6 +3,7 @@
 
 import util.plugins
 
+class
 define = "Wordpress"
 author = "Andrew Horton"
 version = "0.5"
@@ -13,4 +14,8 @@ website = "http://www.wordpress.org"
 dorks = [
 	'"is proudly powered by WordPress"',
 ]
+
+# detail
+marks = []
+
 

@@ -9,7 +9,7 @@ from util.config import *
 
 def printInfo(file,message):
 	"""
-
+	格式化打印错误信息
 	:param file: __file__
 	:param message:  e
 	:return:
@@ -18,7 +18,7 @@ def printInfo(file,message):
 
 
 
-def getLogger(isDebug=False):
+def getLogger():
 	"""
 	log handler
 	:param isDebug:
@@ -29,7 +29,7 @@ def getLogger(isDebug=False):
 	path = LOGFILE
 	fh = fileHandler(path,formatter)
 	sh = streamHandler(formatter)
-	if isDebug:
+	if Debug:
 		logger.setLevel(logging.DEBUG)
 	logger.addHandler(fh)
 	logger.addHandler(sh)
@@ -56,3 +56,31 @@ def streamHandler(formatter):
 	sh.setLevel(logging.ERROR)
 	sh.setFormatter(formatter)
 	return sh
+
+def calcProbability(rawData):
+	"""
+	计算概率
+	:param rawData:{"Hawei":2,"h3c":3,"kk":1}
+	:return:
+	"""
+	logger = getLogger()
+	total = 0
+	probabilDict = dict()
+	for key,value in rawData.items():
+		try:
+			total = int(value)+total
+		except Exception as e:
+			logger.error(printInfo(__file__,str(e)+",function is calcProbability"))
+			continue
+	for key in rawData.keys():
+		try:
+			probabilDict[key] = "{:.2f}%".format(rawData[key]/float(total)*100)
+		except Exception as e:
+			logger.error(printInfo(__file__,str(e)+", function is calcProbability"))
+
+	return probabilDict
+
+
+if __name__ == '__main__':
+	data = {"Hawei":2,"h3c":"qq","kk":1}
+	print(calcProbability(data))
