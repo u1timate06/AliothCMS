@@ -1,0 +1,6 @@
+{
+  "Huawei-Firewall": {
+    "content":"",
+    "regx":{"/fav.ico":"md5=","/1.js":"md5=","/robot":"body=huawei||header=kk"}
+  }
+}
