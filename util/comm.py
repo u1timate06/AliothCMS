@@ -81,6 +81,22 @@ def calcProbability(rawData):
 	return probabilDict
 
 
+def convertDict(str_data):
+	"""
+	string(like http header) ==> dict
+	:param self:
+	:param str_data:
+	:return:
+	"""
+	try:
+		s = str_data.strip().split('\n')
+		s = {x.split(':')[0]: x.split(':')[1] for x in s}
+	except Exception as e:
+		logger = getLogger()
+		logger.error(printInfo(__file__,"convertDict function: "+str(e)))
+		s = {}
+	return s
+
 if __name__ == '__main__':
 	data = {"Hawei":2,"h3c":"qq","kk":1}
 	print(calcProbability(data))
