@@ -57,6 +57,8 @@ def streamHandler(formatter):
 	sh.setFormatter(formatter)
 	return sh
 
+
+
 def calcProbability(rawData):
 	"""
 	计算概率
