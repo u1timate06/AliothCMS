@@ -38,7 +38,8 @@ class PluginBase:
 	def start(self, url):
 		self.url = url
 		self._verify()
-		self.output()
+		# self.output()
+		return self.matches_result
 	
 	def output(self):
 		"""
@@ -104,7 +105,7 @@ class PluginBase:
 				elif sign.strip() == "version":
 					result = self._find(cms_rule[sign], self.contents)
 					if len(result) > 0:
-						result.append("version", self.code)
+						result.append(("version", self.code))
 						self.matches_result[self.cms_name].append(tuple(type(result)))
 				elif sign.strip() == "header":
 					self._header(sign, cms_rule[sign])
