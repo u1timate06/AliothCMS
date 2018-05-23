@@ -1,21 +1,17 @@
 #!/usr/bin/env python
 # __Author__:cmustard
 
-import util.plugins
-
-class
-define = "Wordpress"
-author = "Andrew Horton"
-version = "0.5"
-description = "Wordpress is an opensource blogging system commonly used as a cms"
-website = "http://www.wordpress.org"
-
-# google hack
-dorks = [
-	'"is proudly powered by WordPress"',
-]
-
-# detail
-marks = []
+from util.plugins import PluginBase
 
 
+class Wordpress(PluginBase):
+    def plugin(self):
+        self.cms_name = "Wordpress"
+        self.author = "Andrew Horton"
+        self.description = "Wordpress is an opensource blogging system commonly used as a cms"
+        self.website = "http://www.wordpress.org"
+
+        # detail
+        matches = []
+
+        return matches
