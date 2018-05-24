@@ -5,6 +5,8 @@ from util.plugins import PluginBase
 
 
 class Wordpress(PluginBase):
+
+
     def plugin(self):
         self.cms_name = "Wordpress"
         self.author = "Andrew Horton"
@@ -12,6 +14,8 @@ class Wordpress(PluginBase):
         self.website = "http://www.wordpress.org"
 
         # detail
-        matches = []
+        matches = [
+            {"header":'Cookie:qtrans_cookie_test'},
+        ]
 
         return matches
