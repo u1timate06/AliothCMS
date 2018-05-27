@@ -105,6 +105,8 @@ def convertDict(str_data):
     return result
 
 
+
+
 if __name__ == '__main__':
     data = """Date: Wed, 23 May 2018 20:03:47 GMT
 Server: Apache-Coyote/1.1
