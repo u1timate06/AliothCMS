@@ -117,7 +117,7 @@ class PluginBase:
                     self._comm(sign, cms_rule[sign])
         # add description
         self.matches_result["description"] = self.description
-        print(self.matches_result)
+        # print(self.matches_result)
 
     def _comm(self, sign, rule):
         result = self._find(rule, self.raw_body)
@@ -176,7 +176,6 @@ class PluginBase:
             self.static_uri = urllib.request.quote(self.static_uri)
             self.url = "{}/{}".format(self.url, self.static_uri)
             self.static_uri = None
-        print(self.url)
         try:
             req = urllib.request.Request(self.url)
             req.add_header("User-Agent", pcUserAgent[choice(list(pcUserAgent.keys()))])
@@ -249,14 +248,14 @@ class PluginBase:
 
     def test(self):
         pass
-# self.url = "www.glamor.site"
+    # self.url = "www.glamor.site"
 
 
-# 	print(self.md5("qwewqr"))
-# 	# self.static_uri = "/2.txt"
-# 	self._access()
-# 	self._verify()
-# # self._header("sign","rule")
+    # 	print(self.md5("qwewqr"))
+    # 	# self.static_uri = "/2.txt"
+    # 	self._access()
+    # 	self._verify()
+    # # self._header("sign","rule")
 
 
 if __name__ == '__main__':
