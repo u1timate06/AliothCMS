@@ -63,6 +63,23 @@ class CmsDector():
         pools.join()
         print("+---------scanner end---------+")
 
+    def cmdRun(self,url,filedir,thread=10):
+        self.url = url
+        plugins_list = []
+        plugins_list_temp = os.listdir(filedir)
+        for name in plugins_list_temp:
+            if "__init__" in name:
+                continue
+            if name.endswith("py"):
+                plugins_list.append(os.path.join(filedir, name))
+        print(plugins_list)
+        for plugin_path in plugins_list:
+            # self.get_cmsRes(plugin_path)
+            pools.apply_async(func=self.get_cmsRes, args=(plugin_path,))
+        pools.close()
+        pools.join()
+        print("+---------scanner end---------+")
+
 
 if __name__ == '__main__':
     c = CmsDector()
