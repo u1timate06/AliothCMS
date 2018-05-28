@@ -6,7 +6,7 @@ import re
 import os
 
 from multiprocessing import Pool
-from util.comm import getLogger
+from util.comm import getLogger,printInfo
 
 PLUGIN_CLASSNAME_REGEX = "class\s+(.*?)\(PluginBase\)"
 LOGGER = getLogger()
@@ -22,24 +22,27 @@ class CmsDector():
 	
 	# 获取插件
 	def get_cmsRes(self, plugin_path):
-		with open(plugin_path, "r") as f:
-			content = f.read()
-		# 获取文件中的类名
-		class_name = re.findall(PLUGIN_CLASSNAME_REGEX, content)[0]
-		# 获取插件名称
-		filename_ex = os.path.split(plugin_path)[1]
-		# 去掉文件后缀名
-		filename = filename_ex.split(".", -1)[0]
-		# 格式化导入语句
-		importString = "fingerprint.{}".format(filename)
-		# 相对导入
-		ip_module = importlib.import_module(importString)
-		ip_module_cls = getattr(ip_module, class_name)
-		# 获取类
-		plugin_class = ip_module_cls()
-		self.cmsRes = plugin_class.start(self.url)
-		# self.cmsRes.put(self.cmsVul)
-		print(self.cmsRes)
+		try:
+			with open(plugin_path, "r") as f:
+				content = f.read()
+			# 获取文件中的类名
+			class_name = re.findall(PLUGIN_CLASSNAME_REGEX, content)[0]
+			# 获取插件名称
+			filename_ex = os.path.split(plugin_path)[1]
+			# 去掉文件后缀名
+			filename = filename_ex.split(".", -1)[0]
+			# 格式化导入语句
+			importString = "fingerprint.{}".format(filename)
+			# 相对导入
+			ip_module = importlib.import_module(importString)
+			ip_module_cls = getattr(ip_module, class_name)
+			# 获取类
+			plugin_class = ip_module_cls()
+			self.cmsRes = plugin_class.start(self.url)
+			# self.cmsRes.put(self.cmsVul)
+			print(self.cmsRes)
+		except Exception as e:
+			LOGGER.error(printInfo(__file__,"{} function error:{}".format("get_cmsRes",str(e))))
 	
 	def run(self, url, thread=10, cmd=False):
 		"""
