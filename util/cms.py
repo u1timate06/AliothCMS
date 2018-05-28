@@ -4,8 +4,8 @@
 import importlib
 import re
 import os
-import sys
-from multiprocessing import Pool, Process, queues
+
+from multiprocessing import Pool
 from util.comm import getLogger
 
 PLUGIN_CLASSNAME_REGEX = "class\s+(.*?)\(PluginBase\)"
@@ -62,10 +62,13 @@ class CmsDector():
 				continue
 			if name.endswith("py"):
 				plugins_list.append(PLUGIN_ROOT + name)
+				
 		print(plugins_list)
+		
 		for plugin_path in plugins_list:
 			# self.get_cmsRes(plugin_path)
 			pools.apply_async(func=self.get_cmsRes, args=(plugin_path,))
+		
 		pools.close()
 		pools.join()
 		print("+---------scanner end---------+")
