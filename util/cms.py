@@ -62,9 +62,10 @@ class CmsDector():
             for value in commom:
                 if value:
                     flag +=1
+            caclRes = "{}%".format(float(flag) / length * 100)
             if flag == 0:
                 caclRes = None
-            caclRes = "{}%".format(float(flag)/length*100)
+
         if len(header)>0:
             caclRes = "{}%".format(100)
 
