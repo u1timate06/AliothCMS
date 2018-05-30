@@ -57,17 +57,17 @@ class CmsDector():
         commom = cmsRes[cms_name]
         length = len(commom)
         flag = 0
+        caclRes = None
         if length>0:
             for value in commom:
                 if value:
                     flag +=1
             if flag == 0:
-                caclRes = 0
+                caclRes = None
             caclRes = "{}%".format(float(flag)/length*100)
         if len(header)>0:
             caclRes = "{}%".format(100)
-        elif caclRes == str(0):
-            caclRes = None
+
         cmsRes[cms_name] = caclRes
         return cmsRes
 
