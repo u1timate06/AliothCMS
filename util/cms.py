@@ -43,7 +43,7 @@ class CmsDector():
             self.cmsRes = obj.start(self.url)
             cms_name = obj.cms_name
             manData = self.caclProbaliy(cms_name)
-            if manData is None:
+            if manData[cms_name] is None:
                 return
             print(manData)
         except Exception as e:
