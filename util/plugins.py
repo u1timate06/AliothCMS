@@ -68,7 +68,7 @@ class PluginBase:
         # 	# {"body": '<a href="http://hexo.io/" target="_blank">Hexo</a>'},
         # 	# {"header": "Server:nginx/1.12.1"},
         # 	# {"static": "/uri", "md5": "12313123123"},
-        # 	# {"static": '/ura', "content": "<name>123"},
+        # 	# {"static": '/ura', "text": "<name>123"},
         # 	{"static": "/usi", "version": '&copy; (2017|2018|2000) glamor'},
         # 	{"head": "asdasd"},
         # 	{"text": "123"},  # body and head
@@ -138,12 +138,12 @@ class PluginBase:
         # format
         for key in header_raw_dict.keys():
             header_dict[key.lower()] = header_raw_dict[key]
-
         if ":" in rule:
             header_name, header_info = rule.split(":")
             # print(header_name)
-            header_lower_name = header_name.lower()
-            if not header_lower_name in list(header_dict.keys()):
+            header_name = header_name.lower()
+
+            if header_name not in list(header_dict.keys()):
                 return
             result = self._find(header_info, header_dict[header_name])
             if len(result) > 0:
