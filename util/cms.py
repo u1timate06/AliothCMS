@@ -29,25 +29,25 @@ class CmsDector():
         :param path:
         :return:
         """
-        # try:
-        class_name = self.getClassName(CLASSNAMEREGX, self.getClassString(path))
-        # 判断
-        spec = importlib.util.spec_from_file_location(class_name, path)
-        if spec is None:
-            raise Exception("import module error!!!")
-        moudle = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(moudle)
-        sys.modules[class_name] = moudle
-        obj = eval("moudle.{}".format(class_name))()
+        try:
+            class_name = self.getClassName(CLASSNAMEREGX, self.getClassString(path))
+            # 判断
+            spec = importlib.util.spec_from_file_location(class_name, path)
+            if spec is None:
+                raise Exception("import module error!!!")
+            moudle = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(moudle)
+            sys.modules[class_name] = moudle
+            obj = eval("moudle.{}".format(class_name))()
 
-        self.cmsRes = obj.start(self.url)
-        cms_name = obj.cms_name
-        manData = self.caclProbaliy(cms_name)
-        if manData[cms_name] is None:
-            return
-        print(manData)
-        # except Exception as e:
-        #     LOGGER.error(printInfo(__file__, "function _getCmsRes error is {}".format(str(e))))
+            self.cmsRes = obj.start(self.url)
+            cms_name = obj.cms_name
+            manData = self.caclProbaliy(cms_name)
+            if manData[cms_name] is None:
+                return
+            print(manData)
+        except Exception as e:
+            LOGGER.error(printInfo(__file__, "function _getCmsRes error is {}".format(str(e))))
 
     def caclProbaliy(self,cms_name):
         if self.cmsRes is None:
