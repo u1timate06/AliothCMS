@@ -117,7 +117,7 @@ class CmsDector():
 
         pools.close()
         pools.join()
-        print("+---------scanner end---------+")
+        print("+---------scanner finish!!!---------+")
 
 
 if __name__ == '__main__':
