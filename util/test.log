@@ -1,4 +1,0 @@
-2018-05-16 12:29:29 cms ERROR An error occurred in file comm.py,  error is invalid literal for int() with base 10: 'qq',function is calcProbability
-2018-05-16 12:29:55 cms ERROR An error occurred in file comm.py,  error is invalid literal for int() with base 10: 'qq',function is calcProbability
-2018-05-16 12:30:55 cms ERROR An error occurred in file comm.py,  error is invalid literal for int() with base 10: 'qq',function is calcProbability
-2018-05-16 12:30:55 cms ERROR An error occurred in file comm.py,  error is unsupported operand type(s) for /: 'str' and 'float', function is calcProbability
