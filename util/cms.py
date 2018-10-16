@@ -122,7 +122,7 @@ class CmsDector():
 
 if __name__ == '__main__':
     c = CmsDector()
-    path = r"C:\Users\glamor\Desktop\red-club\玉衡CMS指纹识别\AliothCMS\fingerprint\jboss.py"
+    path = r"C:\Users\AliothCMS\fingerprint\jboss.py"
     # url = "http://182.87.0.20:8081/portal/bsdt.seam"
     url = "http://39.106.37.114:443/"
     c.run(url)
